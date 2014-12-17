@@ -2,6 +2,13 @@
    (:require [reagent.core :as reagent :refer [atom]]))
 
 (enable-console-print!)
+
+(def pgraph
+(reagent/create-class
+  {:render (fn [] 
+             [:p "Interop"])}))
+
+(comment
 (def state (atom {:text "Enter text" :value 1}))
 
 (defn row [label & body]
@@ -19,6 +26,7 @@
   [:p (@test :text)])
 
 (defn home []                                                                                    
+
   [:div                                                                                        
      [:div.page-header [:h1 "THIS IS A HEADER!!!!"]]
      [text-input state "First name"]
@@ -29,3 +37,9 @@
   (.log js/console (pr-str [1 2 3 4]))
   (println "Hey")
   (reagent/render [home] (.getElementById js/document "app")))
+)
+
+
+(defn start [message]
+  (println "Working")
+  (reagent/render [pgraph] (.getElementById js/document "app")))
